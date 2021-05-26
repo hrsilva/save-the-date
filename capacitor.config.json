@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "SaveTheDate",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,0 +1,8 @@
+{
+  "name": "SaveTheDate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "10c6d284"
+}
