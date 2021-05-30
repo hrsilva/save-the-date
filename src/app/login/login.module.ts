@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Login } from './login.page';
 import { LoginRoutingModule } from './login-routing.module';
@@ -9,11 +9,12 @@ import { MessageComponentModule } from '../message/message.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     IonicModule,
-    MessageComponentModule,
-    LoginRoutingModule
+    FormsModule,
+    CommonModule,
+    LoginRoutingModule,
+    ReactiveFormsModule,
+    MessageComponentModule
   ],
   declarations: [Login]
 })

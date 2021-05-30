@@ -1,8 +1,48 @@
 <ion-content [fullscreen]="true">
   <div class="div-inner ion-padding">
-    <span>Cadastro</span>
+    <span>Cadastro de Usuário</span>
+    <p>Preencha os dados abaixo para continuar.</p>
 
-    <ion-item class="ion-margin-top" lines="none">
+    <form [formGroup]="cadastroForm">
+      <ion-item class="ion-margin-top">
+        <!-- <ion-label>Nome*</ion-label> -->
+        <ion-input type="text" placeholder="Nome*" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <!-- <ion-label>Sobrenome*</ion-label> -->
+        <ion-input type="text" placeholder="Sobrenome*" formControlName="sobrenome"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <!-- <ion-label>E-mail*</ion-label> -->
+        <ion-input type="email" placeholder="E-mail*" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <!-- <ion-label>Senha*</ion-label> -->
+        <ion-input type="password" placeholder="Senha*" formControlName="senha"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Data Nascimento*</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataNascimento"></ion-datetime>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <!-- <ion-label>CPF</ion-label> -->
+        <ion-input type="text" placeholder="CPF" formControlName="cpf"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-checkbox formControlName="aceitoTermos" slot="start"></ion-checkbox>
+        <ion-label>Aceito os termos de uso</ion-label>
+      </ion-item>
+
+      <div class="hr"></div>
+      <ion-grid class="div-buttons">
+        <ion-row>
+          <ion-col text-center>
+            <ion-button [disabled]="cadastroForm.invalid" type="submit" (click)="login()" color="light" expand="full" shape="round">Cadastrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+    <!-- <ion-item class="ion-margin-top" lines="none">
       <ion-input type="text" placeholder="Nome" [(ngModel)]="userLogin.nome"></ion-input>
     </ion-item>
     <ion-item class="ion-margin-top" lines="none">
@@ -13,20 +53,20 @@
     </ion-item>
     <ion-item class="ion-margin-top" lines="none">
       <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.senha"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>Data Nascimento</ion-label>
       <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="userLogin.dataNascimento"></ion-datetime>
     </ion-item>
     <ion-item class="ion-margin-top" lines="none">
       <ion-input type="text" placeholder="CPF" [(ngModel)]="userLogin.sobrenome"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-    <div class="div-buttons">
+    <!-- <div class="div-buttons">
       <ion-button class="ion-margin-top" href="./cadastrar" color="primary">
         Cadastrar
       </ion-button>
-    </div>
+    </div> -->
   </div>
 </ion-content>

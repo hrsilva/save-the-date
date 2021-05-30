@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService, Message } from '../services/data.service';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,11 @@ import { DataService, Message } from '../services/data.service';
 })
 export class Login {
   constructor(private data: DataService) {}
+
+  loginForm = new FormGroup({
+    email: new FormControl('',[Validators.required]),
+    senha: new FormControl('',[Validators.required])
+  });
 
   refresh(ev) {
     setTimeout(() => {
