@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+  <div class="div-inner ion-padding">
+    <span>Cadastro</span>
+
+    <ion-item class="ion-margin-top" lines="none">
+      <ion-input type="text" placeholder="Nome" [(ngModel)]="userLogin.nome"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-top" lines="none">
+      <ion-input type="text" placeholder="Sobrenome" [(ngModel)]="userLogin.sobrenome"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-top" lines="none">
+      <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-top" lines="none">
+      <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.senha"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Data Nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="userLogin.dataNascimento"></ion-datetime>
+    </ion-item>
+    <ion-item class="ion-margin-top" lines="none">
+      <ion-input type="text" placeholder="CPF" [(ngModel)]="userLogin.sobrenome"></ion-input>
+    </ion-item>
+
+    <div class="div-buttons">
+      <ion-button class="ion-margin-top" href="./cadastrar" color="primary">
+        Cadastrar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
