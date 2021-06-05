@@ -21,9 +21,9 @@ export interface Message {
 export class DataService {
   public messages: Message[] = [
     {
-      nome: 'Matt Chorsey',
+      nome: 'Evento Cultural CXS',
       data_inicio: '04/09/2021',
-      data_fim: '9:32 AM',
+      data_fim: '04/09/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,
@@ -35,9 +35,9 @@ export class DataService {
       descricao: 'Festa cultural.'
     },
     {
-      nome: 'Lauren Ruthford',
+      nome: 'Show Banda A',
       data_inicio: '20/05/2021',
-      data_fim: '6:12 AM',
+      data_fim: '20/05/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,
@@ -49,9 +49,9 @@ export class DataService {
       descricao: 'Festa cultural.'
     },
     {
-      nome: 'Jordan Firth',
+      nome: 'Palestra Marketing com Jordan Firth',
       data_inicio: '05/06/2021',
-      data_fim: '4:55 AM',
+      data_fim: '05/06/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,
@@ -63,9 +63,9 @@ export class DataService {
       descricao: 'Festa cultural.'
     },
     {
-      nome: 'Bill Thomas',
+      nome: 'Autógrafos com Bill Thomas',
       data_inicio: '03/06/2021',
-      data_fim: 'Yesterday',
+      data_fim: '03/06/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,
@@ -77,9 +77,9 @@ export class DataService {
       descricao: 'Festa cultural.'
     },
     {
-      nome: 'Joanne Pollan',
+      nome: 'Workshop de Guitarra',
       data_inicio: '13/07/2021',
-      data_fim: 'Yesterday',
+      data_fim: '13/07/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,
@@ -88,12 +88,12 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 4,
-      descricao: 'Festa cultural.'
+      descricao: 'Será apresentada técnicas do instrumento, apresentando todo o caminho a ser percorrido para se tornar um guitarrista profissional. O apresentador irá exemplificar as regulagens de efeitos com pedais e amplificador, o que deve ser levado em conta no momento de preparar seus equipamentos.'
     },
     {
       nome: 'Andrea Cornerston',
       data_inicio: '10/06/2021',
-      data_fim: 'Yesterday',
+      data_fim: '10/06/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,
@@ -107,7 +107,7 @@ export class DataService {
     {
       nome: 'Moe Chamont',
       data_inicio: '04/10/2021',
-      data_fim: 'Last Week',
+      data_fim: '04/10/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,
@@ -121,7 +121,7 @@ export class DataService {
     {
       nome: 'Kelly Richardson',
       data_inicio: '13/08/2021',
-      data_fim: 'Last Week',
+      data_fim: '13/08/2021',
       hora_inicio: '10:12',
       hora_fim: '05:12',
       quantidade_pessoas: 100,

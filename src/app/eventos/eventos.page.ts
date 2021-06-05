@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { DataService, Message } from '../services/data.service';
 
 @Component({
@@ -13,6 +15,11 @@ export class EventosPage implements OnInit {
   ngOnInit() {
   }
 
+  filtroForm = new FormGroup({
+    descricao: new FormControl(''),
+    data: new FormControl(''),
+  });
+
   refresh(ev) {
     setTimeout(() => {
       ev.detail.complete();
@@ -22,4 +29,6 @@ export class EventosPage implements OnInit {
   getMessages(): Message[] {
     return this.data.getMessages();
   }
+
+  submit() {}
 }
