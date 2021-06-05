@@ -27,4 +27,10 @@ export class CadastroEventosPage implements OnInit {
   ngOnInit() {
   }
 
+  getBackButtonText() {
+    const win = window as any;
+    const mode = win && win.Ionic && win.Ionic.mode;
+    return mode === 'ios' ? 'Inbox' : '';
+  }
+
 }
