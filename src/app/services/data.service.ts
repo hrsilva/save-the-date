@@ -12,6 +12,7 @@ export interface Message {
   cidade: string,
   estado: string,
   id: number;
+  id_usuario_criador: number;
   descricao: string;
 }
 
@@ -32,6 +33,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 0,
+      id_usuario_criador: 1,
       descricao: 'Festa cultural.'
     },
     {
@@ -46,6 +48,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 1,
+      id_usuario_criador: 1,
       descricao: 'Festa cultural.'
     },
     {
@@ -60,6 +63,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 2,
+      id_usuario_criador: 1,
       descricao: 'Festa cultural.'
     },
     {
@@ -74,6 +78,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 3,
+      id_usuario_criador: 1,
       descricao: 'Festa cultural.'
     },
     {
@@ -88,6 +93,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 4,
+      id_usuario_criador: 1,
       descricao: 'Será apresentada técnicas do instrumento, apresentando todo o caminho a ser percorrido para se tornar um guitarrista profissional. O apresentador irá exemplificar as regulagens de efeitos com pedais e amplificador, o que deve ser levado em conta no momento de preparar seus equipamentos.'
     },
     {
@@ -102,6 +108,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 5,
+      id_usuario_criador: 1,
       descricao: 'Festa cultural.'
     },
     {
@@ -116,6 +123,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 6,
+      id_usuario_criador: 1,
       descricao: 'Festa cultural.'
     },
     {
@@ -130,6 +138,7 @@ export class DataService {
       cidade: 'Caxias do Sul',
       estado: 'RS',
       id: 7,
+      id_usuario_criador: 1,
       descricao: 'Festa cultural.'
     }
   ];
