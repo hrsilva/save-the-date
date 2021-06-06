@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./cadastro-eventos/cadastro-eventos.module').then(m => m.CadastroEventosPageModule)
   },
   {
+    path: 'cadastro-eventos/:id',
+    loadChildren: () => import('./cadastro-eventos/cadastro-eventos.module').then(m => m.CadastroEventosPageModule)
+  },
+  {
     path: 'eventos',
     loadChildren: () => import('./eventos/eventos.module').then( m => m.EventosPageModule)
   },
