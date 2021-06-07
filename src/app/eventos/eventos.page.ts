@@ -30,5 +30,7 @@ export class EventosPage implements OnInit {
     return this.data.getMessages();
   }
 
-  submit() {}
+  submit() {
+    
+  }
 }

@@ -1,0 +1,6 @@
+<ion-item *ngIf="usuario" [routerLink]="'/usuario/' + usuario.id" [detail]="false">
+  <!-- <div slot="start" [class]="!usuario.read ? 'dot dot-unread' : 'dot'"></div> -->
+  <ion-label class="ion-text-wrap">
+    <h2>{{ usuario.nome + ' ' + usuario.sobrenome }}</h2>
+  </ion-label>
+  </ion-item>
