@@ -1,5 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../services/data.service';
+
+import { DataService, Message } from '../services/data.service';
 
 @Component({
   selector: 'app-message',
@@ -9,7 +11,9 @@ import { Message } from '../services/data.service';
 export class MessageComponent implements OnInit {
   @Input() message: Message;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {}
 

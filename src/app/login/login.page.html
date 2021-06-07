@@ -2,29 +2,44 @@
   <div class="div-inner ion-padding">
     <h2>Seja bem-vindo!</h2>
     <p>Faça o login para continuar ou realize seu cadastro.</p>
+    <!-- <ion-card>
+      <ion-card-header>
+        <ion-card-title>Seja bem-vindo!</ion-card-title>
+        <ion-card-subtitle>Faça o login para continuar ou realize seu cadastro.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content> -->
+        <form [formGroup]="loginForm">
+          <ion-item class="ion-margin-top">
+            <!-- <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input> -->
+            <ion-label>E-Mail</ion-label>
+            <ion-input type="email" placeholder="nom@exemple.fr" formControlName="email" required></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <!-- <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.senha"></ion-input> -->
+            <ion-label>Senha</ion-label>
+            <ion-input type="password" formControlName="senha" required></ion-input>
+          </ion-item>
+    
+          <ion-grid class="div-buttons">
+            <ion-row>
+              <ion-col text-center>
+                <ion-button [disabled]="loginForm.invalid" type="submit" (click)="login()" color="primary"  expand="full" shape="round">Entrar</ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center>
+                <ion-button href="./cadastro" color="light" type="button" expand="full" shape="round">Cadastrar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      <!-- </ion-card-content>
+    </ion-card> -->
+    
 
-    <form [formGroup]="loginForm">
-      <ion-item class="ion-margin-top">        
-        <ion-label>E-Mail</ion-label>
-			  <ion-input type="email" placeholder="nome@exemplo.br" formControlName="email" required></ion-input>
-      </ion-item>
-      <ion-item class="ion-margin-top">
-        <ion-label>Senha</ion-label>
-			  <ion-input type="password" formControlName="senha" required></ion-input>
-      </ion-item>
-
-      <ion-grid class="div-buttons">
-        <ion-row>
-          <ion-col text-center>
-            <ion-button [disabled]="loginForm.invalid" type="submit" (click)="login()" color="light" expand="full" shape="round">Entrar</ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col text-center>
-            <ion-button href="./cadastro" color="primary" type="button" expand="full" shape="round">Cadastrar</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </form>
+    <!-- <div class="div-buttons">
+      <ion-button class="ion-margin-top" (click)="login()" color="light">Entrar</ion-button>
+      <ion-button class="ion-margin-top" href="./cadastro" color="primary">Cadastrar</ion-button>
+    </div> -->
   </div>
 </ion-content>
