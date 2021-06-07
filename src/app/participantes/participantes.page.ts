@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { DataServiceUsuario, Usuario } from '../services/data-usuario.service';
 
 @Component({
   selector: 'app-participantes',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParticipantesPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private data: DataServiceUsuario
+  ) { }
 
   ngOnInit() {
   }
 
+  refresh(ev) {
+    setTimeout(() => {
+      ev.detail.complete();
+    }, 3000);
+  }
+
+  getUsuarios(): Usuario[] {
+    return this.data.getUsuarios();
+  }
 }
