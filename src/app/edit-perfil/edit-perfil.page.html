@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button text="back" icon="arrow-backward"></ion-back-button>
+    <ion-title>Editar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="div-inner ion-padding">
+    <p>Editar dados do perfil.</p>
+
+    <form [formGroup]="editPerfilForm">
+      <ion-item class="ion-margin-top">
+        <ion-input type="text" placeholder="Nome*" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-input type="text" placeholder="Sobrenome*" formControlName="sobrenome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Data Nascimento*</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataNascimento"></ion-datetime>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-input type="text" placeholder="CPF" formControlName="cpf"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-checkbox formControlName="alterarSenha" slot="start" (click)="alteraSenha()"></ion-checkbox>
+        <ion-label>Deseja alterar a senha?</ion-label>
+      </ion-item>
+
+      <ion-list *ngIf="showSenha">
+        <ion-item class="ion-margin-top">
+          <ion-label>Senha Atual </ion-label>
+          <ion-input type="password" formControlName="senhaAtual" required></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-top">
+          <ion-label>Nova Senha </ion-label>
+          <ion-input type="password" formControlName="novaSenha" required></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="hr"></div>
+      <ion-grid class="div-buttons">
+        <ion-row>
+          <ion-col text-center>
+            <ion-button [disabled]="editPerfilForm.invalid" type="submit" (click)="login()" color="light" expand="full" shape="round">Editar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>

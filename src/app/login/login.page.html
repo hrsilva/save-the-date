@@ -4,13 +4,11 @@
     <p>Faça o login para continuar ou realize seu cadastro.</p>
 
     <form [formGroup]="loginForm">
-      <ion-item class="ion-margin-top">
-        <!-- <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input> -->
+      <ion-item class="ion-margin-top">        
         <ion-label>E-Mail</ion-label>
-			  <ion-input type="email" placeholder="nom@exemple.fr" formControlName="email" required></ion-input>
+			  <ion-input type="email" placeholder="nome@exemplo.br" formControlName="email" required></ion-input>
       </ion-item>
       <ion-item class="ion-margin-top">
-        <!-- <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.senha"></ion-input> -->
         <ion-label>Senha</ion-label>
 			  <ion-input type="password" formControlName="senha" required></ion-input>
       </ion-item>
@@ -28,10 +26,5 @@
         </ion-row>
       </ion-grid>
     </form>
-
-    <!-- <div class="div-buttons">
-      <ion-button class="ion-margin-top" (click)="login()" color="light">Entrar</ion-button>
-      <ion-button class="ion-margin-top" href="./cadastro" color="primary">Cadastrar</ion-button>
-    </div> -->
   </div>
 </ion-content>

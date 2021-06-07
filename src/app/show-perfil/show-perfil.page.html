@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" icon="arrow-backward"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Seu Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="div-inner ion-padding">
+    <p>Seus dados:</p>
+
+    <form [formGroup]="showPerfilForm">
+      <ion-item class="ion-margin-top">
+        <span>Nome:</span>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <span>Sobrenome:</span>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <span>E-mail:</span>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <span>Data de Nascimento:</span>
+      </ion-item>
+      <ion-item class="ion-margin-top" lines="none">
+        <span>CPF:</span>
+      </ion-item>
+
+      <div class="hr"></div>
+      <ion-grid class="div-buttons">
+        <ion-row>
+          <ion-col text-center>
+            <ion-button [disabled]="editPerfilForm.invalid" type="submit" (click)="login()" color="light" expand="full" shape="round">Edite seus dados</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>

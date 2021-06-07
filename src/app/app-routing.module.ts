@@ -19,6 +19,14 @@ const routes: Routes = [
     loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
   },
   {
+    path: 'edit-perfil',
+    loadChildren: () => import('./edit-perfil/edit-perfil.module').then(m => m.EditPerfilModule)
+  },
+  {
+    path: 'show-perfil',
+    loadChildren: () => import('./show-perfil/show-perfil.module').then(m => m.ShowPerfilModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
