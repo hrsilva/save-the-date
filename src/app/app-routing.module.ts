@@ -24,6 +24,14 @@ const routes: Routes = [
     loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
   },
   {
+    path: 'edit-perfil',
+    loadChildren: () => import('./edit-perfil/edit-perfil.module').then(m => m.EditPerfilModule)
+  },
+  {
+    path: 'show-perfil',
+    loadChildren: () => import('./show-perfil/show-perfil.module').then(m => m.ShowPerfilModule)
+  },
+  {
     path: 'cadastro-eventos',
     loadChildren: () => import('./cadastro-eventos/cadastro-eventos.module').then(m => m.CadastroEventosPageModule)
   },
@@ -42,7 +50,7 @@ const routes: Routes = [
   {
     path: 'participantes',
     loadChildren: () => import('./participantes/participantes.module').then( m => m.ParticipantesPageModule)
-  },
+  }
 ];
 
 @NgModule({
