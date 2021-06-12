@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface Usuario {
+  id: string;
   nome: string;
   sobrenome: string;
   email: string;
@@ -14,6 +15,7 @@ export interface Usuario {
 export class DataServiceUsuario {
   public usuario: Usuario[] = [
     {
+      id: '1',
       nome: 'Jhon',
       sobrenome: 'Doe',
       email: 'jhondoe@jhondoe.com',
@@ -21,6 +23,7 @@ export class DataServiceUsuario {
       cpf: '01134455567'
     },
     {
+      id: '2',
       nome: 'Jairo',
       sobrenome: 'Nascimento',
       email: 'jaironasc@jairo.com',

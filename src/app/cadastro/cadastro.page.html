@@ -28,7 +28,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Data Nascimento*</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataNascimento"></ion-datetime>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="data_nascimento"></ion-datetime>
       </ion-item>
       <ion-item class="ion-margin-top">
         <!-- <ion-label>CPF</ion-label> -->
@@ -43,7 +43,7 @@
       <ion-grid class="div-buttons">
         <ion-row>
           <ion-col text-center>
-            <ion-button [disabled]="cadastroForm.invalid" type="submit" (click)="login()" color="light" expand="full" shape="round">Cadastrar</ion-button>
+            <ion-button type="submit" (click)="onSubmit()" color="light" expand="full" shape="round">Cadastrar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
