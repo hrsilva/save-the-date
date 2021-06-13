@@ -13,13 +13,19 @@ export class FirestoreService {
 
   constructor(public firestore: AngularFirestore) {}
 
-    createUsuario(nome: string, sobrenome: string, email: string, data_nascimento: string, cpf: string): Promise<void> {
+    createUsuario(nome: string, sobrenome: string, email: string, data_nascimento: string, cpf: string) {
         const idnew = this.firestore.createId();
-
-        return this.firestore.doc(`usuariosList/${idnew}`).set({
-            nome, sobrenome, email, data_nascimento,cpf
-        });
+        
+        return idnew
     }
+
+    // createUsuario(nome: string, sobrenome: string, email: string, data_nascimento: string, cpf: string): Promise<void> {
+    //     const idnew = this.firestore.createId();
+        
+    //     return this.firestore.doc(`usuariosList/${idnew}`).set({
+    //         nome, sobrenome, email, data_nascimento,cpf
+    //     });
+    // }
 
     getUsuarioList(): Observable<Usuario[]> {
         return this.firestore.collection<Usuario>(`usuariosList`).valueChanges();
@@ -27,5 +33,9 @@ export class FirestoreService {
 
     getUsuarioDetail(usuarioId: string): Observable<Usuario> {
         return this.firestore.collection('usuarioList').doc<Usuario>(usuarioId).valueChanges();
+    }
+
+    getUsuarioById(usuarioId: string) {
+        return this.firestore.collection('usuarioList').doc<Usuario>(usuarioId).valueChanges()
     }
 }

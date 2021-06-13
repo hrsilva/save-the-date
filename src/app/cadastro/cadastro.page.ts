@@ -45,7 +45,10 @@ export class Cadastro implements OnInit {
   }
 
   async onSubmit() {
-    console.log(this.cadastroForm.value)
+    // this.firestoreService.createUsuario(this.cadastroForm.value.nome, this.cadastroForm.value.sobrenome, this.cadastroForm.value.email, this.cadastroForm.value.data_nascimento, this.cadastroForm.value.cpf).then(
+    //   res => {},
+    //   error => {}
+    // )
     let response = await this.firestoreService.createUsuario(this.cadastroForm.value.nome, this.cadastroForm.value.sobrenome, this.cadastroForm.value.email, this.cadastroForm.value.data_nascimento, this.cadastroForm.value.cpf)
 
     console.log(response)
