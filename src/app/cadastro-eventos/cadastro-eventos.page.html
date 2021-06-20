@@ -14,6 +14,14 @@
         <ion-label>Nome</ion-label>
         <ion-input type="text" placeholder="Nome*" formControlName="nome"></ion-input>
       </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-label>Hora Início</ion-label>
+        <ion-input type="text" placeholder="Hora Início*" formControlName="hora_inicio"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-label>Hora Fim</ion-label>
+        <ion-input type="text" placeholder="Hora Fim*" formControlName="hora_fim"></ion-input>
+      </ion-item>
       <ion-item>
         <ion-label>Data Início</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY" formControlName="data_inicio"></ion-datetime>
@@ -79,7 +87,7 @@
       <ion-grid class="div-buttons">
         <ion-row>
           <ion-col text-center>
-            <ion-button [disabled]="cadastroForm.invalid" type="submit" (click)="submit()" color="primary" expand="full" shape="round">Salvar</ion-button>
+            <ion-button type="submit" (click)="onSubmit()" color="primary" expand="full" shape="round">Salvar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -14,6 +15,7 @@ import { FirestoreService } from '../services/firestore.service';
 })
 export class Cadastro implements OnInit {
   constructor(
+    private router: Router,
     private data: DataService,
     private firestoreService: FirestoreService
   ) {}
@@ -45,13 +47,10 @@ export class Cadastro implements OnInit {
   }
 
   async onSubmit() {
-    // this.firestoreService.createUsuario(this.cadastroForm.value.nome, this.cadastroForm.value.sobrenome, this.cadastroForm.value.email, this.cadastroForm.value.data_nascimento, this.cadastroForm.value.cpf).then(
-    //   res => {},
-    //   error => {}
-    // )
-    let response = await this.firestoreService.createUsuario(this.cadastroForm.value.nome, this.cadastroForm.value.sobrenome, this.cadastroForm.value.email, this.cadastroForm.value.data_nascimento, this.cadastroForm.value.cpf)
+    let response = await this.firestoreService.createUsuario(this.cadastroForm.value.nome, this.cadastroForm.value.sobrenome, this.cadastroForm.value.email, this.cadastroForm.value.data_nascimento, this.cadastroForm.value.cpf, this.cadastroForm.value.senha)
 
-    console.log(response)
+    localStorage.setItem('usuario', response)
+    this.router.navigateByUrl('eventos')
   }
 
 }

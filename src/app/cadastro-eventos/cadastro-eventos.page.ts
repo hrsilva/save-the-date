@@ -1,10 +1,14 @@
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import * as moment from 'moment'
+import { Observable } from 'rxjs';
 
+import { Evento } from '../models/evento.interface';
+import { Usuario } from '../models/usuario.interface';
 import { DataService, Message } from '../services/data.service';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-cadastro-eventos',
@@ -14,10 +18,13 @@ import { DataService, Message } from '../services/data.service';
 export class CadastroEventosPage implements OnInit {
 
   public evento: Message = null
+  public eventosList: Observable<Evento[]>;
 
   constructor(
+    private router: Router,
     private data: DataService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private firestoreService: FirestoreService
   ) { }
 
   cadastroForm = new FormGroup({
@@ -35,6 +42,7 @@ export class CadastroEventosPage implements OnInit {
   })
 
   ngOnInit() {
+    this.eventosList = this.firestoreService.getEventoList();
     const id = this.activatedRoute.snapshot.paramMap.get('id')
 
     if (id) {
@@ -74,23 +82,29 @@ export class CadastroEventosPage implements OnInit {
     return mode === 'ios' ? 'Inbox' : '';
   }
 
-  submit() {
+  async onSubmit() {
     if (this.evento) {
-      let submitForm = {
-        nome: this.evento.nome,
-        data_inicio: this.evento.data_inicio,
-        data_fim: this.evento.data_fim,
-        hora_inicio: this.evento.hora_inicio,
-        hora_fim: this.evento.hora_fim,
-        quantidade_pessoas: this.cadastroForm.value.quantidade_pessoas,
-        valor_entrada: this.evento.valor_entrada,
-        endereco: this.cadastroForm.value.endereco,
-        cidade: this.cadastroForm.value.cidade,
-        estado: this.cadastroForm.value.estado,
-        descricao: this.cadastroForm.value.descricao
-      }
+      
     } else {
+      var data_inicio = this.cadastroForm.value.data_inicio.split('T')
+      var data_fim = this.cadastroForm.value.data_fim.split('T')
+      
+      let response = await this.firestoreService.createEvento(
+        this.cadastroForm.value.nome, 
+        data_inicio[0], 
+        data_fim[0], 
+        this.cadastroForm.value.hora_inicio, 
+        this.cadastroForm.value.hora_fim, 
+        this.cadastroForm.value.quantidade_pessoas, 
+        this.cadastroForm.value.valor_entrada, 
+        this.cadastroForm.value.endereco, 
+        this.cadastroForm.value.cidade, 
+        this.cadastroForm.value.estado, 
+        localStorage.getItem('usuario'), 
+        this.cadastroForm.value.descricao
+      )
 
+      this.router.navigateByUrl('eventos')
     }
   }
 }

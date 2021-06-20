@@ -5,4 +5,5 @@ export interface Usuario {
     email: string;
     data_nascimento: string;
     cpf: string;
+    senha: string;
 }

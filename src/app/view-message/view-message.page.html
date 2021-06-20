@@ -14,7 +14,7 @@
       <h2>
         {{ message.nome }}
         <span class="date">
-          <ion-note>{{ message.data_inicio }}</ion-note>
+          <ion-note>{{ message.data_inicio | date: 'dd/MM/yyyy' }}</ion-note>
         </span>
       </h2>
     </ion-label>
@@ -23,12 +23,12 @@
   <div class="ion-padding">
     <ion-row>
       <ion-col col-12>
-        <b>Data: </b>{{ message.data_inicio + ' - ' + message.data_fim }}
+        <b>Data: </b>{{ message.data_inicio | date: 'dd/MM/yyyy' }} - {{ message.data_fim | date: 'dd/MM/yyyy'}}
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-12>
-        <b>Valor da Entrada: </b>b>{{ message.valor_entrada }}
+        <b>Valor da Entrada: </b>{{ message.valor_entrada | currency:"BRL":true:"1.2" }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -47,8 +47,13 @@
       </ion-col>
     </ion-row>
     <ion-grid class="div-buttons button-participar">
-      <ion-row>
+      <ion-row [style.display]="participacao ? '' : 'none'">
         <ion-col text-center>
+          <ion-button type="button" (click)="cancelar()" color="light" expand="full" shape="round">Cancelar Participação</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center [style.display]="participacao ? 'none' : ''">
           <ion-button type="submit" (click)="submit()" color="primary" expand="full" shape="round">Participar</ion-button>
         </ion-col>
       </ion-row>

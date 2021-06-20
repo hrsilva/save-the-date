@@ -19,7 +19,7 @@
     <ion-row>
       <ion-col col-12>
         <ion-item class="ion-margin-top">
-          <ion-input type="text" placeholder="Descrição" formControlName="descricao"></ion-input>
+          <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -33,12 +33,34 @@
     </ion-row>
     <ion-row>
       <ion-col col-12>
+        <ion-button type="submit" (click)="limparFiltro()" color="light" expand="full" shape="round">Limpar Filtro</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
         <ion-button type="submit" (click)="submit()" color="primary" expand="full" shape="round">Filtrar</ion-button>
       </ion-col>
     </ion-row>
   </form>
 
   <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
+    <app-message *ngFor="let message of eventosList" [message]="message"></app-message>
+    <!-- <div *ngFor="let evento of eventosList">
+      <ion-item [routerLink]="'/evento/' + evento.id" [detail]="false">
+        <ion-label class="ion-text-wrap">
+          <h2>
+            {{ evento.nome }}
+            <span class="date">
+              <ion-note>{{ evento.data_inicio }}</ion-note>
+              <ion-icon name="chevron-forward" size="small" *ngIf="isIos()"></ion-icon>
+            </span>
+          </h2>
+          <h3></h3>
+          <p>
+            {{ evento.descricao }}
+          </p>
+        </ion-label>
+      </ion-item>
+    </div> -->
   </ion-list>
 </ion-content>
