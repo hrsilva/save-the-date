@@ -28,11 +28,7 @@ export class EditPerfil {
       ev.detail.complete();
     }, 3000);
   }
-
-  getMessages(): Message[] {
-    return this.data.getMessages();
-  }
-
+  
   alteraSenha() {
     this.showSenha = !this.showSenha;
   }

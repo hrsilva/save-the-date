@@ -31,11 +31,11 @@
       <ion-list *ngIf="showSenha">
         <ion-item class="ion-margin-top">
           <ion-label>Senha Atual </ion-label>
-          <ion-input type="password" formControlName="senhaAtual" required></ion-input>
+          <ion-input type="password" formControlName="senhaAtual" [disabled]="!showSenha"></ion-input>
         </ion-item>
         <ion-item class="ion-margin-top">
           <ion-label>Nova Senha </ion-label>
-          <ion-input type="password" formControlName="novaSenha" required></ion-input>
+          <ion-input type="password" formControlName="novaSenha" [disabled]="!showSenha"></ion-input>
         </ion-item>
       </ion-list>
 
@@ -43,7 +43,7 @@
       <ion-grid class="div-buttons">
         <ion-row>
           <ion-col text-center>
-            <ion-button [disabled]="editPerfilForm.invalid" type="submit" (click)="login()" color="light" expand="full" shape="round">Editar</ion-button>
+            <ion-button [disabled]="editPerfilForm.invalid" type="submit" (click)="login()" color="primary" expand="full" shape="round">Editar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
