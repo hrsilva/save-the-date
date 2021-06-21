@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ShowPerfil } from './show-perfil.page';
 import { ShowPerfilRoutingModule } from './show-perfil-routing.module';
-import { MessageComponentModule } from '../message/message.module';
 
 @NgModule({
   imports: [
@@ -13,8 +12,7 @@ import { MessageComponentModule } from '../message/message.module';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    ShowPerfilRoutingModule,
-    MessageComponentModule
+    ShowPerfilRoutingModule
   ],
   declarations: [ShowPerfil]
 })

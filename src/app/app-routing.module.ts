@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'eventos',
+    redirectTo: 'tabs',
     pathMatch: 'full'
   },
   {
@@ -50,7 +50,11 @@ const routes: Routes = [
   {
     path: 'participantes',
     loadChildren: () => import('./participantes/participantes.module').then( m => m.ParticipantesPageModule)
-  }
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
 ];
 
 @NgModule({
