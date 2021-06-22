@@ -11,6 +11,9 @@
 
     <form [formGroup]="editPerfilForm">
       <ion-item class="ion-margin-top">
+        <ion-label>E-mail: {{ usuario ? usuario.email : '' }}</ion-label>
+      </ion-item>
+      <ion-item class="ion-margin-top">
         <ion-input type="text" placeholder="Nome*" formControlName="nome"></ion-input>
       </ion-item>
       <ion-item class="ion-margin-top">
@@ -43,7 +46,7 @@
       <ion-grid class="div-buttons">
         <ion-row>
           <ion-col text-center>
-            <ion-button [disabled]="editPerfilForm.invalid" type="submit" (click)="login()" color="light" expand="full" shape="round">Editar</ion-button>
+            <ion-button [disabled]="!editPerfilForm.invalid" type="submit" (click)="submit()" color="light" expand="full" shape="round">Editar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

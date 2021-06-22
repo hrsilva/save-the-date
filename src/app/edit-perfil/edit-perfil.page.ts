@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { Usuario } from '../models/usuario.interface';
 import { DataService, Message } from '../services/data.service';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'edit-perfil.page.html',
   styleUrls: ['edit-perfil.page.scss'],
 })
-export class EditPerfil {
-  constructor(private data: DataService) {}
+export class EditPerfil implements OnInit {
+  constructor(
+    private data: DataService,
+    private firestoreService: FirestoreService
+  ) {}
 
-  editPerfilForm = new FormGroup({
+  public editPerfilForm = new FormGroup({
     nome: new FormControl('',[Validators.required]),
     sobrenome: new FormControl('',[Validators.required]),
     dataNascimento: new FormControl('',[Validators.required]),
@@ -21,7 +26,25 @@ export class EditPerfil {
     novaSenha: new FormControl('')
   });
 
-  public showSenha = true;
+  public usuario = null
+  public showSenha = true
+  public usuarioId = localStorage.getItem('usuario')
+
+  ngOnInit() {
+    this.firestoreService.getUsuarioDetail(this.usuarioId).subscribe(res => {
+      if (res) {
+        this.usuario = res
+        this.preencheCamposForm()
+      }
+    })
+  }
+
+  preencheCamposForm() {
+    this.editPerfilForm.get('nome').setValue(this.usuario.nome)
+    this.editPerfilForm.get('sobrenome').setValue(this.usuario.sobrenome)
+    this.editPerfilForm.get('cpf').setValue(this.usuario.cpf)
+    this.editPerfilForm.get('dataNascimento').setValue(this.usuario.data_nascimento)
+  }
 
   refresh(ev) {
     setTimeout(() => {
@@ -37,4 +60,9 @@ export class EditPerfil {
     this.showSenha = !this.showSenha;
   }
 
+  submit() {
+    this.firestoreService.updateUsuario(this.usuarioId, this.editPerfilForm.value.nome, this.editPerfilForm.value.sobrenome, this.editPerfilForm.value.dataNascimento, this.editPerfilForm.value.cpf).then(
+      res => { console.log("res: ", res) }
+    ).catch(err => { console.log("err: ", err) })
+  }
 }

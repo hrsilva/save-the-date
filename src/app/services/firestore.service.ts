@@ -47,6 +47,21 @@ export class FirestoreService {
         return this.firestore.collection('usuarios', ref => ref.where('email', '==', email).where('senha', '==', senha)).valueChanges()
     }
 
+    async updateUsuario(id: string, nome: string, sobrenome: string, data_nascimento: string, cpf: string, senha?: string): Promise<any> {
+        let update_usuario =  {
+            nome: nome,
+            sobrenome: sobrenome,
+            data_nascimento: data_nascimento,
+            cpf: cpf
+        }
+
+        if (senha) {
+            update_usuario['senha'] = senha
+        }
+
+        return this.firestore.doc(`usuarios/${id}`).update(update_usuario)
+    }
+
     // SERVICES DE EVENTOS
     async createEvento(nome: string, data_inicio: string, data_fim: string, hora_inicio: string, hora_fim: string, quantidade_pessoas: string, valor_entrada: string, endereco: string, cidade: string, estado: string, id_usuario_criador: string, descricao: string) {
         const id = this.firestore.createId();
