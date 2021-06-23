@@ -1,41 +1,40 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="back" icon="arrow-backward"></ion-back-button>
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/eventos"></ion-back-button>
+      <ion-title>Seu Perfil</ion-title>
     </ion-buttons>
-    <ion-title>Seu Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="div-inner ion-padding">
     <p>Seus dados:</p>
-
-    <form [formGroup]="showPerfilForm">
+    
       <ion-item class="ion-margin-top">
-        <span>Nome:</span>
+        <span>Nome: {{ usuario ? usuario.nome : '' }}</span>
       </ion-item>
       <ion-item class="ion-margin-top">
-        <span>Sobrenome:</span>
+        <span>Sobrenome: {{ usuario ? usuario.sobrenome : '' }}</span>
       </ion-item>
       <ion-item class="ion-margin-top">
-        <span>E-mail:</span>
+        <span>E-mail: {{ usuario ? usuario.email : '' }}</span>
       </ion-item>
       <ion-item class="ion-margin-top">
-        <span>Data de Nascimento:</span>
+        <span>Data de Nascimento: {{ usuario ? (usuario.data_nascimento | date: 'dd/MM/yyyy') : '' }}</span>
       </ion-item>
       <ion-item class="ion-margin-top" lines="none">
-        <span>CPF:</span>
+        <span>CPF: {{ usuario ? usuario.cpf : '' }}</span>
       </ion-item>
 
       <div class="hr"></div>
       <ion-grid class="div-buttons">
         <ion-row>
           <ion-col text-center>
-            
+            <ion-button href="./edit-perfil" color="light" expand="full" shape="round">Edite seus dados</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
-    </form>
+    
   </div>
 </ion-content>

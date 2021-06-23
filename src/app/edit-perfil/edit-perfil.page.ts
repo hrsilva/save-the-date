@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -12,6 +13,7 @@ import { FirestoreService } from '../services/firestore.service';
 })
 export class EditPerfil implements OnInit {
   constructor(
+    private router: Router,
     private data: DataService,
     private firestoreService: FirestoreService
   ) {}
@@ -51,18 +53,16 @@ export class EditPerfil implements OnInit {
       ev.detail.complete();
     }, 3000);
   }
-
-  getMessages(): Message[] {
-    return this.data.getMessages();
-  }
-
+  
   alteraSenha() {
     this.showSenha = !this.showSenha;
   }
 
   submit() {
     this.firestoreService.updateUsuario(this.usuarioId, this.editPerfilForm.value.nome, this.editPerfilForm.value.sobrenome, this.editPerfilForm.value.dataNascimento, this.editPerfilForm.value.cpf).then(
-      res => { console.log("res: ", res) }
+      res => {
+        this.router.navigateByUrl('tabs/eventos')
+      }
     ).catch(err => { console.log("err: ", err) })
   }
 }
