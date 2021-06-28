@@ -27,13 +27,6 @@ export class FirestoreService {
 
         return `${id}`
     }
-    // async createUsuario(nome: string, sobrenome: string, email: string, data_nascimento: string, cpf: string, senha: string): Promise<void> {
-    //     const idnew = this.firestore.createId();
-        
-    //     return this.firestore.doc(`usuarios/${idnew}`).set({
-    //         nome, sobrenome, email, data_nascimento, cpf, senha
-    //     });
-    // }
 
     getUsuarioList(): Observable<Usuario[]> {
         return this.firestore.collection<Usuario>(`usuarios`).valueChanges();
@@ -87,23 +80,44 @@ export class FirestoreService {
         }
     }
 
+    getEventosUsuario(usuarioId: string) {
+        return this.firestore.collection('eventos', ref => ref.where('id_usuario_criador', '==', usuarioId)).valueChanges()
+    }
+
     getEventoDetail(eventoId: string): Observable<Evento> {
         return this.firestore.collection('eventos').doc<Evento>(eventoId).valueChanges();
     }
 
     // SERVICES DE PARTICIPANTE EVENTO
-    async createParticipacao(id_usuario, id_evento) {
+    async createParticipacao(id_usuario, usuario, id_evento, evento) {
         const id = this.firestore.createId();
+        const validado: number = 0
         
         await this.firestore.doc(`participanteEvento/${id}`).set({
-            id, id_usuario, id_evento
+            id, id_usuario, usuario, id_evento, evento, validado
         });
 
         return `${id}`
     }
 
+    getEntradaDetail(entradaId: string): Observable<ParticipanteEvento> {
+        return this.firestore.collection('participanteEvento').doc<ParticipanteEvento>(entradaId).valueChanges();
+    }
+
+    async validarEntrada(id: string): Promise<any> {
+        let update =  {
+            validado: 1
+        }
+
+        return this.firestore.doc(`participanteEvento/${id}`).update(update)
+    }
+
     verificaParticipacao(id_usuario: string, id_evento: string) {
         return this.firestore.collection('participanteEvento', ref => ref.where('id_usuario','==', id_usuario).where('id_evento', '==', id_evento)).valueChanges()
+    }
+
+    getEntradasUsuario(id_usuario: string) {
+        return this.firestore.collection('participanteEvento', ref => ref.where('id_usuario','==', id_usuario)).valueChanges()
     }
 
     cancelar(id_participacao: string) {

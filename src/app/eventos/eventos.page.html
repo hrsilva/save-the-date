@@ -45,22 +45,5 @@
 
   <ion-list>
     <app-message *ngFor="let message of eventosList" [message]="message"></app-message>
-    <!-- <div *ngFor="let evento of eventosList">
-      <ion-item [routerLink]="'/evento/' + evento.id" [detail]="false">
-        <ion-label class="ion-text-wrap">
-          <h2>
-            {{ evento.nome }}
-            <span class="date">
-              <ion-note>{{ evento.data_inicio }}</ion-note>
-              <ion-icon name="chevron-forward" size="small" *ngIf="isIos()"></ion-icon>
-            </span>
-          </h2>
-          <h3></h3>
-          <p>
-            {{ evento.descricao }}
-          </p>
-        </ion-label>
-      </ion-item>
-    </div> -->
   </ion-list>
 </ion-content>

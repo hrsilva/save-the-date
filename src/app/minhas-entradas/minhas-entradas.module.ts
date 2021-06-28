@@ -4,9 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EventosPage } from './eventos.page';
-import { EventosPageRoutingModule } from './eventos-routing.module';
-import { MessageComponentModule } from '../message/message.module';
+import { MinhasEntradasPage } from './minhas-entradas.page';
+import { MinhasEntradasPageRoutingModule } from './minhas-entradas-routing.module';
 
 @NgModule({
   imports: [
@@ -14,9 +13,8 @@ import { MessageComponentModule } from '../message/message.module';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    MessageComponentModule,
-    EventosPageRoutingModule
+    MinhasEntradasPageRoutingModule
   ],
-  declarations: [EventosPage]
+  declarations: [MinhasEntradasPage]
 })
-export class EventosPageModule {}
+export class MinhasEntradasPageModule {}

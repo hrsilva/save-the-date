@@ -47,6 +47,11 @@
       </ion-col>
     </ion-row>
     <ion-grid class="div-buttons button-participar">
+      <ion-row [style.display]="id_usuario == message.id_usuario_criador ? '' : 'none'">
+        <ion-col text-center>
+          <ion-button type="button" (click)="redirectValidar()" color="success" expand="full" shape="round">Validar Entradas</ion-button>
+        </ion-col>
+      </ion-row>
       <ion-row [style.display]="participacao ? '' : 'none'">
         <ion-col text-center>
           <ion-button type="button" (click)="cancelar()" color="light" expand="full" shape="round">Cancelar Participação</ion-button>

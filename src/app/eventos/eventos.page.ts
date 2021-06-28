@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable } from 'rxjs';
-
-import { Evento } from '../models/evento.interface';
 import { DataService, Message } from '../services/data.service';
 import { FirestoreService } from '../services/firestore.service';
 

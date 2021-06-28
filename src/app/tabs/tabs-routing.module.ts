@@ -27,6 +27,24 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'meus-eventos',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../meus-eventos/meus-eventos.module').then(m => m.MeusEventosPageModule)
+          }
+        ]
+      },
+      {
+        path: 'minhas-entradas',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../minhas-entradas/minhas-entradas.module').then(m => m.MinhasEntradasPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: 'tabs/eventos',
         pathMatch: 'full'

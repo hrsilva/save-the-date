@@ -39,7 +39,8 @@ export class Login {
     this.firestoreService.loginUsuario(this.loginForm.value.email, this.loginForm.value.senha).subscribe(res => {
       if (res.length > 0) {
         localStorage.setItem('usuario', res[0]['id'])
-        this.router.navigateByUrl('eventos')
+        localStorage.setItem('usuario_nome', res[0]['nome'] + ' ' + res[0]['sobrenome'])
+        this.router.navigateByUrl('tabs/eventos')
       } else {
         this.alertaLoginFail()
       }

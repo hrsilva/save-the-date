@@ -13,6 +13,7 @@ import { FirestoreService } from '../services/firestore.service';
 export class ViewMessagePage implements OnInit {
   public message;
   public participacao = null;
+  public id_usuario = localStorage.getItem('usuario');
 
   constructor(
     private router: Router,
@@ -28,14 +29,12 @@ export class ViewMessagePage implements OnInit {
       this.message = res
       this.verificaParticipante()
     })
-
   }
 
   verificaParticipante() {
     var id_evento = this.message.id
-    var id_usuario = localStorage.getItem('usuario')
 
-    this.firestoreService.verificaParticipacao(id_usuario, id_evento).subscribe(res => {
+    this.firestoreService.verificaParticipacao(this.id_usuario, id_evento).subscribe(res => {
       if (res.length > 0) {
         this.participacao = res[0]
       }
@@ -77,15 +76,21 @@ export class ViewMessagePage implements OnInit {
     this.router.navigateByUrl('eventos')
   }
 
+  redirectValidar() {
+    this.router.navigateByUrl(`validar-entradas/${this.message.id}`)
+  }
+
   async submit() {
     var id_evento = this.message.id
+    var evento = this.message.nome
     var id_usuario = localStorage.getItem('usuario')
+    var usuario = localStorage.getItem('usuario_nome')
     
-    await this.firestoreService.createParticipacao(id_usuario, id_evento)
+    await this.firestoreService.createParticipacao(id_usuario, usuario, id_evento, evento)
 
     const alert = await this.alertController.create({
       header: 'Feito!',
-      message: 'Sua participação foi garantida!',
+      message: 'Sua participação foi garantida! Verifique suas entradas.',
       buttons: ['OK']
     });
 

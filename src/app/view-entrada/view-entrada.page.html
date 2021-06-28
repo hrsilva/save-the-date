@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/tabs/meus-eventos"></ion-back-button>
+      <ion-title>Entrada</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="entrada">
+  <!-- <ion-item>
+    <ion-icon name="person-circle" color="primary"></ion-icon>
+    <ion-label class="ion-text-wrap">
+      <h2>
+        {{ entrada.evento }}
+      </h2>
+    </ion-label>
+  </ion-item> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{evento ? (evento.endereco + ' - ' + evento.cidade + ' - ' + evento.estado) : ''}}</ion-card-subtitle>
+      <ion-card-title>{{entrada.evento}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Código da Entrada: <ion-label color="primary"><b>{{entrada.id}}</b></ion-label>
+      Data Início: <b>{{evento ? (evento.data_inicio | date: 'dd/MM/yyyy') : ''}}</b>
+      <p>{{evento ? evento.descricao : ''}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
