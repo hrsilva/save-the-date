@@ -16,5 +16,5 @@ Dúvidas sobre a instalação? Link para a documentação de instalação CLI do
 https://ionicframework.com/docs/intro/cli
 
 Após a primeira instalação basta executar no terminal para executar a aplicação: 
-npm install
+npm install &&
 ionic serve
