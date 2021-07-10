@@ -1,6 +1,7 @@
 import { AlertController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { IonInfiniteScroll } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService, Message } from '../services/data.service';
 
 import { FirestoreService } from '../services/firestore.service';
@@ -13,7 +14,11 @@ import { FirestoreService } from '../services/firestore.service';
 export class ViewMessagePage implements OnInit {
   public message;
   public participacao = null;
+  public usuarioCriador = false;
+  public listParticipantes: Array<any> = [];
   public id_usuario = localStorage.getItem('usuario');
+
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   constructor(
     private router: Router,
@@ -28,7 +33,17 @@ export class ViewMessagePage implements OnInit {
     this.firestoreService.getEventoDetail(id).subscribe(res => {
       this.message = res
       this.verificaParticipante()
+
+      if (this.id_usuario == this.message.id_usuario_criador) {
+        this.usuarioCriador = true
+        this.getUsuariosParticipantes()
+      }
     })
+  }
+
+  isIos() {
+    const win = window as any;
+    return win && win.Ionic && win.Ionic.mode === 'ios';
   }
 
   verificaParticipante() {
@@ -38,6 +53,12 @@ export class ViewMessagePage implements OnInit {
       if (res.length > 0) {
         this.participacao = res[0]
       }
+    })
+  }
+
+  getUsuariosParticipantes() {
+    this.firestoreService.getEntradasEventos(this.message.id).subscribe(res => {
+      this.listParticipantes = res
     })
   }
 
@@ -78,6 +99,10 @@ export class ViewMessagePage implements OnInit {
 
   redirectValidar() {
     this.router.navigateByUrl(`validar-entradas/${this.message.id}`)
+  }
+
+  toggleInfiniteScroll() {
+    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
   }
 
   async submit() {

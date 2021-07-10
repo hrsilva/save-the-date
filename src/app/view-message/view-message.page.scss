@@ -39,9 +39,15 @@ p {
   line-height: 22px;
 }
 
-.button-participar {
-  position: fixed;
-  left: 0;
-  bottom: 10px;
-  right: 0;
+// .button-participar {
+//   position: fixed;
+//   left: 0;
+//   bottom: 10px;
+//   right: 0;
+// }
+
+.hr {
+  border-bottom: 1px solid #ccc;
+  margin: 10px 0;
+  width: 100%;
 }

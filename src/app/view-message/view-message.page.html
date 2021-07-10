@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons>
-      <ion-back-button [text]="getBackButtonText()" defaultHref="/eventos"></ion-back-button>
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/tabs/eventos"></ion-back-button>
       <ion-title>Evento</ion-title>
     </ion-buttons>
   </ion-toolbar>
@@ -46,6 +46,26 @@
         <b>Descrição:</b> {{ message.descricao }}
       </ion-col>
     </ion-row>
+
+    <div class="hr"></div>
+    <ion-list *ngIf="usuarioCriador">
+      <b>Participantes</b>
+      <div *ngFor="let p of listParticipantes">
+        <ion-item *ngIf="p" [detail]="false">
+          <div slot="start" [class]="!p.validado == 1 ? 'dot dot-unread' : 'dot'"></div>
+          <ion-label class="ion-text-wrap">
+            <h2>
+              {{ p.usuario }}
+              <span class="date">
+                <ion-note>{{ p.validado == 0 ? 'Não validado' : 'Validado' }}</ion-note>
+                <ion-icon name="chevron-forward" size="small" *ngIf="isIos()"></ion-icon>
+              </span>
+            </h2>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-list>
+
     <ion-grid class="div-buttons button-participar">
       <ion-row [style.display]="id_usuario == message.id_usuario_criador ? '' : 'none'">
         <ion-col text-center>

@@ -120,6 +120,10 @@ export class FirestoreService {
         return this.firestore.collection('participanteEvento', ref => ref.where('id_usuario','==', id_usuario)).valueChanges()
     }
 
+    getEntradasEventos(id_evento: string) {
+        return this.firestore.collection('participanteEvento', ref => ref.where('id_evento','==', id_evento)).valueChanges()
+    }
+
     cancelar(id_participacao: string) {
         this.firestore.doc<any>(`participanteEvento/${id_participacao}`).delete();
     }
